@@ -87,9 +87,8 @@ function rtciao_init(field) {
 		value = values[i].strip();
 		if (value) {rtciao_insert_inputs(field, value);}
 	}
-	add_button = target.children('img#insert_new_date');
+	add_button = target = jq("div#"+field+"_calendar_target img#insert_new_date");
 	add_button.click(function (){rtciao_insert_new_date(field)});
-    console.log(add_button);
     textarea.hide();
     new_date.datepicker({showOn: 'button', 
                          buttonImage: 'popup_calendar.gif', 
