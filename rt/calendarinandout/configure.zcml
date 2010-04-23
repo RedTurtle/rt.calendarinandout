@@ -18,7 +18,6 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
-    <include package=".browser" />
     <i18n:registerTranslations directory="locales" />
 
 </configure>
