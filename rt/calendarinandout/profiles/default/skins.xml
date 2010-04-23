@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_skins">
+ <object name="rt_calendarinandout" meta_type="Filesystem Directory View"
+         directory="rt.calendarinandout:skins/rt_calendarinandout"/>
+ <skin-path name="*" purge="False">
+  <layer name="rt_calendarinandout" insert-after="*" />
+ </skin-path>
+</object>
+

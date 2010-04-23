@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="rt.calendarinandout">
+
+    <five:registerPackage package="." />
+    <cmf:registerDirectory name="rt_calendarinandout"/>
+
+    <genericsetup:registerProfile
+        name="default"
+        title="rt.calendarinandout"
+        directory="profiles/default"
+        description="rt.calendarinandout for plone"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <include package=".browser" />
+    <i18n:registerTranslations directory="locales" />
+
+</configure>
+
