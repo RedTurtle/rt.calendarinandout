@@ -15,17 +15,17 @@ class CalendarInAndOut(LinesWidget):
         'default_minute' : 0,
         })
 
-    def initjs(self):
+    def init_calendar(self, field_name):
         """
         Initializes js calendar machinery
         """
         return ("""
         <script type="text/javascript">
             <!--
-                calendarinandoutinit('%s');
+                rtciao_init('%s');
             //-->
         </script>
-""") % 'except'
+""") % field_name
 
 InitializeClass(CalendarInAndOut)
 

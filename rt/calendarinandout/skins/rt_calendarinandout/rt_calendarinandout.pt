@@ -35,7 +35,7 @@
                      alt="[insert]" 
 					 />
 		      </div>
-			  <tal:initjs tal:replace="structure widget/initjs" />
+			  <tal:initjs tal:replace="structure python:widget.init_calendar(fieldName)" />
           </div>
 		  
       </div>
