@@ -31,8 +31,8 @@
                        size="25"
                        />
                 <img id="insert_new_date" 
-                     src="search_icon.gif" 
-                     alt="[insert]" 
+                     src="add_icon.gif" 
+                     alt="[+]" 
 					 />
 		      </div>
 			  <tal:initjs tal:replace="structure python:widget.init_calendar(fieldName)" />

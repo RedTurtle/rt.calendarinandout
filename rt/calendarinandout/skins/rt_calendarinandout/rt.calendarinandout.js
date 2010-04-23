@@ -68,7 +68,7 @@ function rtciao_insert_inputs(field, value) {
 	new_p = target.children(':last') ;
 	new_p.append('<input disabled="disabled" type="text" value="'+value+'">');
     // We also add a link to remove the added date
-	new_img = '<img id="'+value+'" src="search_icon.gif">';
+	new_img = '<img id="'+value+'" src="delete_icon.gif" alt="[-]">';
 	new_p.append(new_img);
 	new_p.children('img').click(function () {rtciao_remove_value(field, value)})
 }
