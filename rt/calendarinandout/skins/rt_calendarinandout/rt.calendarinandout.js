@@ -90,7 +90,7 @@ function rtciao_init(field) {
 	add_button = target.children('img#insert_new_date');
 	add_button.click(function (){rtciao_insert_new_date(field)});
     console.log(add_button);
-    //textarea.css({'display' : 'none'});
+    textarea.hide();
     new_date.datepicker({showOn: 'button', 
                          buttonImage: 'popup_calendar.gif', 
                          buttonImageOnly: true,
