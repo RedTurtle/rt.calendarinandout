@@ -33,6 +33,7 @@
                 <img id="insert_new_date" 
                      src="add_icon.gif" 
                      alt="[+]"
+					 title="[+]"
 					 style="cursor:pointer" 
 					 />
 		      </div>
