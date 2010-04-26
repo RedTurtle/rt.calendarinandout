@@ -33,7 +33,7 @@ function rtciao_sync_inputs(field) {
      * Syncs the inputs with the saved values
      */
 	textarea = jq("#"+field);
-    values = textarea.attr('value').split("\n");
+    values = textarea.attr('value').split("\n").sort();
 	for (i=0;i<values.length;i++){
         value = values[i].strip();
         if (value) {rtciao_insert_inputs(field, value);}
@@ -54,7 +54,7 @@ function rtciao_insert_inputs(field, value) {
     /*
      * Inserts an input with the given value
      */
-	// we wnat the value to be not null
+	// we want the value to be not null
 	if (!value.strip()) {
 		return;
 	}
@@ -68,7 +68,7 @@ function rtciao_insert_inputs(field, value) {
 	new_p = target.children(':last') ;
 	new_p.append('<input disabled="disabled" type="text" value="'+value+'">');
     // We also add a link to remove the added date
-	new_img = '<img id="'+value+'" src="delete_icon.gif" alt="[-]">';
+	new_img = '<img id="'+value+'" src="delete_icon.gif" alt="[-]" style="cursor:pointer">';
 	new_p.append(new_img);
 	new_p.children('img').click(function () {rtciao_remove_value(field, value)})
 }

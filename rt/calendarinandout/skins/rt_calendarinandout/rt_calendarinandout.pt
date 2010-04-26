@@ -32,7 +32,8 @@
                        />
                 <img id="insert_new_date" 
                      src="add_icon.gif" 
-                     alt="[+]" 
+                     alt="[+]"
+					 style="cursor:pointer" 
 					 />
 		      </div>
 			  <tal:initjs tal:replace="structure python:widget.init_calendar(fieldName)" />
