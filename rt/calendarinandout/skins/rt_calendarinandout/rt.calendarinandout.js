@@ -59,8 +59,11 @@ function rtciao_insert_inputs(field, value) {
 		return;
 	}
 	// we want it to be non existent
-	if (jq("div#"+field+"_calendar_target div#values_target input[value="+value+"]").length >0 ) {
-		return;
+	inputs = jq("div#"+field+"_calendar_target div#values_target input[value="+value+"]"); 
+	if (inputs.length >0 ) {
+		inputs.animate({color:'red'});
+        inputs.animate({color:'black'});
+        return;
 	};
 	// we have a slot on the page where to add those new input
 	target = jq("div#"+field+"_calendar_target div#values_target");
