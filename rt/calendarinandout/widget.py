@@ -19,13 +19,15 @@ class CalendarInAndOut(LinesWidget):
         """
         Initializes js calendar machinery
         """
+        lang = self.portal_languages.getLanguageBindings()[0]
         return ("""
+        <script type="text/javascript" src="jquery.ui.datepicker-%s.js"></script>
         <script type="text/javascript">
             <!--
                 rtciao_init('%s');
             //-->
         </script>
-""") % field_name
+""") % (lang, field_name)
 
 InitializeClass(CalendarInAndOut)
 
