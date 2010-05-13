@@ -9,7 +9,8 @@
 
     <five:registerPackage package="." />
     <cmf:registerDirectory name="rt_calendarinandout"/>
-
+    <include package="collective.js.jqueryui" />
+    
     <genericsetup:registerProfile
         name="default"
         title="rt.calendarinandout"
