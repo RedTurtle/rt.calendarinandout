@@ -3,7 +3,7 @@ from Globals import InitializeClass
 from Products.Archetypes.public import LinesWidget
 from Products.Archetypes.Registry import registerWidget
 
-class CalendarInAndOut(LinesWidget):
+class CalendarInAndOutWidget(LinesWidget):
     """ A widget"""
 
     _properties = LinesWidget._properties.copy()
@@ -29,10 +29,10 @@ class CalendarInAndOut(LinesWidget):
         </script>
 """) % (lang, field_name)
 
-InitializeClass(CalendarInAndOut)
+InitializeClass(CalendarInAndOutWidget)
 
-registerWidget(CalendarInAndOut,
-               title='CalendarInAndOut',
+registerWidget(CalendarInAndOutWidget,
+               title='CalendarInAndOutWidget',
                description='A calendar widget',
                used_for=('Products.Archetypes.Field.LinesField',)
                )

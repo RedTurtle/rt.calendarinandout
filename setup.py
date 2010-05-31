@@ -32,7 +32,7 @@ setup(name='rt.calendarinandout',
       zip_safe=False,
       install_requires=['setuptools',
                         # -*- Extra requirements: -*-
-                        'collective.js.jqueryui'
+                        'collective.js.jqueryui<1.8dev'
                         ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
