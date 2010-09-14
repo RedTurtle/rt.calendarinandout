@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from Globals import InitializeClass
 from Products.Archetypes.public import LinesWidget
 from Products.Archetypes.Registry import registerWidget
@@ -9,7 +10,7 @@ class CalendarInAndOutWidget(LinesWidget):
     _properties = LinesWidget._properties.copy()
     _properties.update({
         'macro' : 'rt_calendarinandout',
-        'dateformat' : '%d/%m/%Y',
+#        'dateformat' : '%d/%m/%Y',
         'with_time' : False,
         'default_hour' : 0,
         'default_minute' : 0,
@@ -33,7 +34,7 @@ InitializeClass(CalendarInAndOutWidget)
 
 registerWidget(CalendarInAndOutWidget,
                title='CalendarInAndOutWidget',
-               description='A calendar widget',
+               description='A widget for adding multiple date information on a Lines Field',
                used_for=('Products.Archetypes.Field.LinesField',)
                )
 

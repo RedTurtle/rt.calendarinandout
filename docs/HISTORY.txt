@@ -1,7 +1,15 @@
 Changelog
 =========
 
-1.0.0-rc1 (unreleased)
+1.0.0-rc2 (Unreleased)
 ----------------------
 
-- Initial release
+* Fixed Javascript docstrings [keul]
+* Removed unused locales directory [keul]
+* Removed unused widget parameter "dateformat" [keul]
+* Some relative URL are now absolute, not breaking browser cache [keul]
+
+1.0.0-rc1 (Unreleased)
+----------------------
+
+* Initial release

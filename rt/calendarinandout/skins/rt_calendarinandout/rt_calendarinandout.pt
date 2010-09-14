@@ -20,7 +20,7 @@
                                         cols widget/cols;
                                         rows widget/rows;"
                         tal:content="python:value and '\n'.join(value) or ''"></textarea>
-              <script type="text/javascript" src="rt.calendarinandout.js"></script>
+              <script type="text/javascript" tal:attributes="src string:$portal_url/rt.calendarinandout.js"></script>
               <div id="calendar_target" style="display:none" 
 			       tal:attributes="id string:${fieldName}_calendar_target">
               	<div id="values_target"></div>

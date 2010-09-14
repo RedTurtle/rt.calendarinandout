@@ -5,7 +5,7 @@ This module contains the tool of rt.calendarinandout
 import os
 from setuptools import setup, find_packages
 
-version = '1.0.0-rc1'
+version = '1.0.0-rc2'
 
 tests_require = ['zope.testing']
 

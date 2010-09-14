@@ -1,15 +1,15 @@
-/*
+/**
  * @author: alert
  * 
  * @summary: 
- * Calendar in and out widget javascript
+ * Calendar in and out (CIAO) widget javascript
  * 
  */
 
+/**
+ * Syncs the textarea with the newly available values
+ */
 function rtciao_sync_textarea(field) {
-    /*
-     * Syncs the textarea with the newly available values
-     */
     var inputs = jq("div#"+field+"_calendar_target div#values_target input");
     var new_values=[];
     for (var i=0; i<inputs.length; i++) {
@@ -19,19 +19,19 @@ function rtciao_sync_textarea(field) {
     textarea.attr({'value' : new_values.join("\n")});
 }
 
+/**
+ * Removes a value from the target inputs
+ */
 function rtciao_remove_value(field, value) {
-    /*
-     * Removes a value from the target inputs
-     */
     var target = jq("div#"+field+"_calendar_target div#values_target input[value="+value+"]");
     target.parent().remove();
     rtciao_sync_textarea(field);
 }
 
+/**
+ * Inserts an input with the given value
+ */
 function rtciao_insert_inputs(field, value) {
-    /*
-     * Inserts an input with the given value
-     */
     // we want the value to be not null
     if (!value.strip()) {
         return;
@@ -54,10 +54,10 @@ function rtciao_insert_inputs(field, value) {
     new_p.children('img').click(function () {rtciao_remove_value(field, value);});
 }
 
+/**
+ * Syncs the inputs with the saved values
+ */
 function rtciao_sync_inputs(field) {
-    /*
-     * Syncs the inputs with the saved values
-     */
     var textarea = jq("#"+field);
     var values = textarea.attr('value').split("\n").sort();
     for (var i=0;i<values.length;i++){
@@ -66,20 +66,20 @@ function rtciao_sync_inputs(field) {
     }
 }
 
+/**
+ * Inserts a new date into the inputs and then syncs the textarea
+ */
 function rtciao_insert_new_date(field) {
-    /*
-     * Inserts a new date into the inputs and then syncs the textarea
-     */
     var target = jq("div#"+field+"_calendar_target ");
     var value = target.children("input#new_date").attr('value');
     rtciao_insert_inputs(field, value);
     rtciao_sync_textarea(field);
 }
 
+/**
+ * Initializes the app
+ */
 function rtciao_init(field) {
-	/*
-	 * Initializes the app
-	 */
 	var target = jq("div#"+field+"_calendar_target");
 	target.css({'display' : 'block'});
 	var new_date = target.children("input#new_date");
