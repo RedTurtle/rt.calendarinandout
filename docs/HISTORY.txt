@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.0-rc2 (Unreleased)
+1.0.0-rc2 (2010-09-15)
 ----------------------
 
 * Fixed Javascript docstrings [keul]
