@@ -1,7 +1,7 @@
 Introduction
 ============
 
-*rt.calendarinandout* provides an archetype widget that allows to add and remove 
+**rt.calendarinandout** provides an archetype widget that allows to add and remove
 dates using the fancy `jquery.ui.datepicker plugin`__
 
 __ http://jqueryui.com/demos/datepicker/
@@ -10,14 +10,10 @@ Usage
 =====
 
 The widget stores the information in to a LinesField archetype field.
-To use it:
-
-* import the widget in your package::
+To use it just add a field like this in your archetype schema::
 
     from Products.Archetypes.atapi import LinesField
     from rt.calendarinandout.widget import CalendarInAndOutWidget
-
-* in your archetype schema add a field like this::
 
     LinesField(
         'dates',
@@ -74,15 +70,23 @@ Add this egg to your buildout
 Direct installation
 -------------------
 
-You can easily include *rt.calendarinandout* in your buildout by adding 
-*rt.calendarinandout* in both in the eggs and zcml sections
+You can easily include **rt.calendarinandout** in your buildout by adding
+it in both in the eggs and zcml sections::
+
+    eggs=...
+         rt.calendarinandout
+         ...
+
+    zcml=...
+         rt.calendarinandout
+         ...
 
 Triggering the installation from your own egg
 ---------------------------------------------
 
-If you are developing your own egg you can make it depend on *rt.calendarinandout* 
+If you are developing your own egg you can make it depend on **rt.calendarinandout** 
 by following those three steps:
-* add *rt.calendarinandout* it in the install_requires section of the setup.py 
+* add **rt.calendarinandout** it in the install_requires section of the setup.py
 of *your egg*::
     
     install_requires=[...
