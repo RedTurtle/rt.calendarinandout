@@ -8,9 +8,11 @@ __ http://jqueryui.com/demos/datepicker/
 
 Usage
 =====
-The widget stores the information in to a LinesField archetype field.
 
-* import the widget from your the package::
+The widget stores the information in to a LinesField archetype field.
+To use it:
+
+* import the widget in your package::
 
     from Products.Archetypes.atapi import LinesField
     from rt.calendarinandout.widget import CalendarInAndOutWidget
@@ -29,45 +31,57 @@ Then you can start enjoyng this widget!
 
 Screenshots
 -----------
-In the edit form your widget will show like this:
-.. image:: http://www.redturtle.net/rt.calendarinandout-0.png
-    :alt: The widget when no date is selected
-    :target: http://www.redturtle.net/
 
-.. image:: http://www.redturtle.net/rt.calendarinandout-1.png
-    :alt: Data can be entered manually or clicking but if you click the calendar 
-a nice datepicker will popup 
-    :target: http://www.redturtle.net/
+* The widget when no date is selected
 
-.. image:: http://www.redturtle.net/rt.calendarinandout-2.png
-    :alt: Clicking the plus the date will be added to the selected values, the 
-red cross will remove the date
-    :target: http://www.redturtle.net/
+.. image:: http://keul.it/images/plone/rt.calendarinandout-0.png
+   :alt: The widget when no date is selected
+   :target: http://keul.it/images/plone/rt.calendarinandout-0.png
 
-.. image:: http://www.redturtle.net/rt.calendarinandout-3.png
-    :alt: The widget when no date is selected
-    :target: http://www.redturtle.net/
+* Data can be entered manually or clicking. If you click the calendar a nice datepicker will popup
 
-.. image:: http://www.redturtle.net/rt.calendarinandout-4.png
-    :alt: Add and remove all the dates you want
-    :target: http://www.redturtle.net/
+.. image:: http://keul.it/images/plone/rt.calendarinandout-1.png
+   :alt: Data can be entered manually or clicking. If you click the calendar a nice datepicker will popup 
+   :target: http://keul.it/images/plone/rt.calendarinandout-1.png
 
-.. image:: http://www.redturtle.net/rt.calendarinandout-5.png
-    :alt: With javascript disabled the widget is still fully functional
-    :target: http://www.redturtle.net/
+* Clicking the plus the date will be added to the selected values, the red cross will remove the date
 
-.. image:: http://www.redturtle.net/rt.calendarinandout-6.png
-    :alt: In view the dates are rendered as an unordered list
-    :target: http://www.redturtle.net/
+.. image:: http://keul.it/images/plone/rt.calendarinandout-2.png
+   :alt: Clicking the plus the date will be added to the selected values, the red cross will remove the date
+   :target: http://keul.it/images/plone/rt.calendarinandout-2.png
+
+* Add and remove all the dates you want
+
+.. image:: http://keul.it/images/plone/rt.calendarinandout-3.png
+   :alt: Add and remove all the dates you want
+   :target: http://keul.it/images/plone/rt.calendarinandout-3.png
+
+* With javascript disabled the widget is still fully functional, falling back to a normal textarea where you can insert dates manually
+
+.. image:: http://keul.it/images/plone/rt.calendarinandout-4.png
+   :alt: With javascript disabled the widget is still fully functional
+   :target: http://keul.it/images/plone/rt.calendarinandout-4.png
+
+* In view the dates are rendered as an unordered list
+
+.. image:: http://keul.it/images/plone/rt.calendarinandout-5.png
+   :alt: In view the dates are rendered as an unordered list
+   :target: http://keul.it/images/plone/rt.calendarinandout-5.png
 
 Add this egg to your buildout
 =============================
 
-You can easily include *rt.calendarinandout* in your buildout (both in the eggs 
-and zcml sections)
+Direct installation
+-------------------
+
+You can easily include *rt.calendarinandout* in your buildout by adding 
+*rt.calendarinandout* in both in the eggs and zcml sections
+
+Triggering the installation from your own egg
+---------------------------------------------
 
 If you are developing your own egg you can make it depend on *rt.calendarinandout* 
-by following those three steps: 
+by following those three steps:
 * add *rt.calendarinandout* it in the install_requires section of the setup.py 
 of *your egg*::
     
@@ -85,10 +99,21 @@ of *your egg*::
       </dependencies>
     </metadata>
 
-* add the dependency in the configure.zcml at the root of your package, 
-including this line::
+* add the dependency in the configure.zcml at the root of your package, including this line::
 
-  <include package="rt.calendarinandout" />
+    <include package="rt.calendarinandout" />
+
+Credits
+=======
+
+Developed with the support of `Comune di Modena`__; Comune di Modena supports the
+`PloneGov initiative`__.
+
+.. image:: http://www.comune.modena.it/grafica/logoComune/logoComunexweb.jpg 
+   :alt: Comune di Modena's logo
+
+__ http://www.comune.modena.it/
+__ http://www.plonegov.it/
 
 Authors
 =======
