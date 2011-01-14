@@ -83,10 +83,11 @@ function rtciao_init(field) {
 	var target = jq("div#"+field+"_calendar_target");
 	target.css({'display' : 'block'});
 	var new_date = target.children("input#new_date");
+	// new_date.attr('disabled', 'disabled');
     var textarea = jq("#"+field); 
 	
 	var values = textarea.attr('value').split('\n');
-	for (i=0;i<values.length;i++){
+	for (var i=0;i<values.length;i++){
 		value = values[i].strip();
 		if (value) {rtciao_insert_inputs(field, value);}
 	}
