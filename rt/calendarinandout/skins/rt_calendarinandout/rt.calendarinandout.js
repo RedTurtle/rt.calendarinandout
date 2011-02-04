@@ -6,6 +6,14 @@
  * 
  */
 
+if(typeof(String.prototype.trim) === "undefined")
+{
+    String.prototype.trim = function() 
+    {
+        return String(this).replace(/^\s+|\s+$/g, '');
+    };
+}
+
 /**
  * Syncs the textarea with the newly available values
  */
@@ -33,7 +41,7 @@ function rtciao_remove_value(field, value) {
  */
 function rtciao_insert_inputs(field, value) {
     // we want the value to be not null
-    if (!value.strip()) {
+    if (!value.trim()) {
         return;
     }
     // we want it to be non existent
@@ -61,7 +69,7 @@ function rtciao_sync_inputs(field) {
     var textarea = jq("#"+field);
     var values = textarea.attr('value').split("\n").sort();
     for (var i=0;i<values.length;i++){
-        var value = values[i].strip();
+        var value = values[i].trim();
         if (value) {rtciao_insert_inputs(field, value);}
     }
 }
@@ -88,7 +96,7 @@ function rtciao_init(field) {
 	
 	var values = textarea.attr('value').split('\n');
 	for (var i=0;i<values.length;i++){
-		value = values[i].strip();
+		value = values[i].trim();
 		if (value) {rtciao_insert_inputs(field, value);}
 	}
 	var add_button = jq("div#"+field+"_calendar_target img#insert_new_date");

@@ -5,7 +5,7 @@ This module contains the tool of rt.calendarinandout
 import os
 from setuptools import setup, find_packages
 
-version = '1.0.0-rc3'
+version = '1.0.0dev'
 
 tests_require = ['zope.testing']
 
@@ -26,14 +26,14 @@ setup(name='rt.calendarinandout',
       keywords='plone widget lines calendar jquery jquery-ui',
       author='RedTurtle Technology',
       author_email='sviluppoplone@redturtle.net',
-      url='http://pypi.python.org/pypi/rt.calendarinandout/',
+      url='http://plone.org/products/rt.calendarinandout',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['rt', ],
       include_package_data=True,
       zip_safe=False,
       install_requires=['setuptools',
-                        'collective.js.jqueryui<1.8dev'
+                        'collective.js.jqueryui'
                         ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
