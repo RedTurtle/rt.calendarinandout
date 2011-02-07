@@ -37,7 +37,8 @@
                      src="add_icon.gif" 
                      alt="[+]"
 					 title="[+]"
-					 style="cursor:pointer" 
+					 style="cursor:pointer"
+					 tal:condition="not:widget/auto_add"
 					 />
 		      </div>
 			  <tal:initjs tal:replace="structure python:widget.init_calendar(fieldName)" />

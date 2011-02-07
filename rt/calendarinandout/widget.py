@@ -5,7 +5,7 @@ from Products.Archetypes.public import LinesWidget
 from Products.Archetypes.Registry import registerWidget
 
 class CalendarInAndOutWidget(LinesWidget):
-    """ A widget"""
+    """A Lines Widget for Dates string, with a popup calendar"""
 
     _properties = LinesWidget._properties.copy()
     _properties.update({
@@ -14,6 +14,7 @@ class CalendarInAndOutWidget(LinesWidget):
         'with_time' : False,
         'default_hour' : 0,
         'default_minute' : 0,
+        'auto_add': False,
         })
 
     def init_calendar(self, field_name):
@@ -21,14 +22,14 @@ class CalendarInAndOutWidget(LinesWidget):
         Initializes js calendar machinery
         """
         lang = self.portal_languages.getLanguageBindings()[0]
-        return ("""
+        return """
         <script type="text/javascript" src="jquery.ui.datepicker-%s.js"></script>
         <script type="text/javascript">
             <!--
-                rtciao_init('%s');
+                rtciao_init('%s', %s);
             //-->
         </script>
-""") % (lang, field_name)
+""" % (lang, field_name, self.auto_add and 'true' or 'false')
 
 InitializeClass(CalendarInAndOutWidget)
 

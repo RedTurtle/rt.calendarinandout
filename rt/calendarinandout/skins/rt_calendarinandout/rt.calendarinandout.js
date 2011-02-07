@@ -59,7 +59,9 @@ function rtciao_insert_inputs(field, value) {
     // We also add a link to remove the added date
     var new_img = '<img id="'+value+'" src="delete_icon.gif" alt="[-]" style="cursor:pointer" title="[-]">';
     new_p.append(new_img);
-    new_p.children('img').click(function () {rtciao_remove_value(field, value);});
+    new_p.children('img').click(function () {
+		rtciao_remove_value(field, value);
+	});
 }
 
 /**
@@ -87,7 +89,7 @@ function rtciao_insert_new_date(field) {
 /**
  * Initializes the app
  */
-function rtciao_init(field) {
+function rtciao_init(field, auto_add) {
 	var target = jq("div#"+field+"_calendar_target");
 	target.css({'display' : 'block'});
 	var new_date = target.children("input#new_date");
@@ -99,11 +101,16 @@ function rtciao_init(field) {
 		value = values[i].trim();
 		if (value) {rtciao_insert_inputs(field, value);}
 	}
-	var add_button = jq("div#"+field+"_calendar_target img#insert_new_date");
-	add_button.click(function (){rtciao_insert_new_date(field);});
+	jq("div#"+field+"_calendar_target img#insert_new_date").click(function (){
+		rtciao_insert_new_date(field);
+	});
     textarea.hide();
     new_date.datepicker({showOn: 'button', 
                          buttonImage: 'popup_calendar.gif', 
                          buttonImageOnly: true,
-                         dateFormat: 'yy-mm-dd'});
+                         dateFormat: 'yy-mm-dd',
+						 onSelect: auto_add && function() {
+						 	rtciao_insert_new_date(field);
+						 } || null
+						});
 }

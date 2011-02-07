@@ -30,39 +30,43 @@ Screenshots
 
 * The widget when no date is selected
 
-.. image:: http://keul.it/images/plone/rt.calendarinandout-0.png
-   :alt: The widget when no date is selected
-   :target: http://keul.it/images/plone/rt.calendarinandout-0.png
+  .. image:: http://keul.it/images/plone/rt.calendarinandout-0.png
+     :alt: The widget when no date is selected
+     :target: http://keul.it/images/plone/rt.calendarinandout-0.png
 
 * Data can be entered manually or clicking. If you click the calendar a nice datepicker will popup
 
-.. image:: http://keul.it/images/plone/rt.calendarinandout-1.png
-   :alt: Data can be entered manually or clicking. If you click the calendar a nice datepicker will popup 
-   :target: http://keul.it/images/plone/rt.calendarinandout-1.png
+  .. image:: http://keul.it/images/plone/rt.calendarinandout-1.png
+     :alt: Data can be entered manually or clicking. If you click the calendar a nice datepicker will popup 
+     :target: http://keul.it/images/plone/rt.calendarinandout-1.png
 
 * Clicking the plus the date will be added to the selected values, the red cross will remove the date
 
-.. image:: http://keul.it/images/plone/rt.calendarinandout-2.png
-   :alt: Clicking the plus the date will be added to the selected values, the red cross will remove the date
-   :target: http://keul.it/images/plone/rt.calendarinandout-2.png
+  .. image:: http://keul.it/images/plone/rt.calendarinandout-2.png
+     :alt: Clicking the plus the date will be added to the selected values, the red cross will remove the date
+     :target: http://keul.it/images/plone/rt.calendarinandout-2.png
+
+  You can also set the ``auto_add`` option for not displaying any "plus" icon, and add the date to the list
+  when a date is selected.
 
 * Add and remove all the dates you want
 
-.. image:: http://keul.it/images/plone/rt.calendarinandout-3.png
-   :alt: Add and remove all the dates you want
-   :target: http://keul.it/images/plone/rt.calendarinandout-3.png
+  .. image:: http://keul.it/images/plone/rt.calendarinandout-3.png
+     :alt: Add and remove all the dates you want
+     :target: http://keul.it/images/plone/rt.calendarinandout-3.png
 
-* With javascript disabled the widget is still fully functional, falling back to a normal textarea where you can insert dates manually
+* With javascript disabled the widget is still fully functional, falling back to a normal textarea where
+  you can insert dates manually
 
-.. image:: http://keul.it/images/plone/rt.calendarinandout-4.png
-   :alt: With javascript disabled the widget is still fully functional
-   :target: http://keul.it/images/plone/rt.calendarinandout-4.png
+  .. image:: http://keul.it/images/plone/rt.calendarinandout-4.png
+     :alt: With javascript disabled the widget is still fully functional
+     :target: http://keul.it/images/plone/rt.calendarinandout-4.png
 
 * In view the dates are rendered as an unordered list
 
-.. image:: http://keul.it/images/plone/rt.calendarinandout-5.png
-   :alt: In view the dates are rendered as an unordered list
-   :target: http://keul.it/images/plone/rt.calendarinandout-5.png
+  .. image:: http://keul.it/images/plone/rt.calendarinandout-5.png
+     :alt: In view the dates are rendered as an unordered list
+     :target: http://keul.it/images/plone/rt.calendarinandout-5.png
 
 Add this egg to your buildout
 =============================
