@@ -90,9 +90,10 @@ Triggering the installation from your own egg
 
 If you are developing your own egg you can make it depend on **rt.calendarinandout** 
 by following those three steps:
+
 * add **rt.calendarinandout** it in the install_requires section of the setup.py
-of *your egg*::
-    
+  of *your egg*::
+  
     install_requires=[...
                       'rt.calendarinandout'
                       ...]
