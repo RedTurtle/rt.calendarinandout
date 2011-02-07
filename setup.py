@@ -11,7 +11,7 @@ tests_require = ['zope.testing']
 
 setup(name='rt.calendarinandout',
       version=version,
-      description="",
+      description="A LinesWidget-like for Plone, used for selecting dates",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
