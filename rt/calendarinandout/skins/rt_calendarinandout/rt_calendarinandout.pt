@@ -28,7 +28,7 @@
               	<div id="values_target"></div>
                 <input value=""
                        type="text"
-                       id="new_date"
+                       class="new_date"
                        name="new_date"
                        size="25"
 					   maxlength="10"

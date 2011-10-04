@@ -81,7 +81,7 @@ function rtciao_sync_inputs(field) {
  */
 function rtciao_insert_new_date(field) {
     var target = jq("div#"+field+"_calendar_target ");
-    var value = target.children("input#new_date").attr('value');
+    var value = target.children("input.new_date").attr('value');
     rtciao_insert_inputs(field, value);
     rtciao_sync_textarea(field);
 }
@@ -90,27 +90,27 @@ function rtciao_insert_new_date(field) {
  * Initializes the app
  */
 function rtciao_init(field, auto_add) {
-	var target = jq("div#"+field+"_calendar_target");
-	target.css({'display' : 'block'});
-	var new_date = target.children("input#new_date");
-	// new_date.attr('disabled', 'disabled');
-    var textarea = jq("#"+field); 
-	
-	var values = textarea.attr('value').split('\n');
-	for (var i=0;i<values.length;i++){
-		value = values[i].trim();
-		if (value) {rtciao_insert_inputs(field, value);}
-	}
-	jq("div#"+field+"_calendar_target img#insert_new_date").click(function (){
-		rtciao_insert_new_date(field);
-	});
+      var target = jq("div#"+field+"_calendar_target");
+      target.css({'display' : 'block'});
+      var new_date = target.children("input.new_date");
+      // new_date.attr('disabled', 'disabled');
+      var textarea = jq("#"+field); 	
+      var values = textarea.attr('value').split('\n');
+      for (var i=0;i<values.length;i++){
+          value = values[i].trim();
+	  if (value) {rtciao_insert_inputs(field, value);}
+      }
+      jq("div#"+field+"_calendar_target img#insert_new_date").click(function (){
+          rtciao_insert_new_date(field);
+      });
     textarea.hide();
     new_date.datepicker({showOn: 'button', 
                          buttonImage: 'popup_calendar.gif', 
                          buttonImageOnly: true,
                          dateFormat: 'yy-mm-dd',
-						 onSelect: auto_add && function() {
-						 	rtciao_insert_new_date(field);
-						 } || null
-						});
+			 onSelect: auto_add && function() {
+                           console.log(this);
+    		 	    rtciao_insert_new_date(field);
+			   } || null
+			});
 }
