@@ -26,7 +26,9 @@ class CalendarInAndOutWidget(LinesWidget):
         <script type="text/javascript" src="jquery.ui.datepicker-%s.js"></script>
         <script type="text/javascript">
             <!--
-                rtciao_init('%s', %s);
+                jq('document').ready(function(){
+                    rtciao_init('%s', %s);
+                });
             //-->
         </script>
 """ % (lang, field_name, self.auto_add and 'true' or 'false')
