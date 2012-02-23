@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.2 (20112-02-23)
+1.0.2 (2012-02-23)
 ------------------
 * Fix problem with widget activation on IE [lucabel] 
 
