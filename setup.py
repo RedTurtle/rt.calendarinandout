@@ -12,12 +12,15 @@ tests_require = ['zope.testing']
 setup(name='rt.calendarinandout',
       version=version,
       description="A LinesWidget-like for Plone, used for selecting dates",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         'Framework :: Plone',
+        'Framework :: Plone :: 3.3',
+        'Framework :: Plone :: 4.0',
+        'Framework :: Plone :: 4.1',
         'Programming Language :: Python',
         'Programming Language :: JavaScript',
         'Intended Audience :: Developers',
@@ -25,7 +28,7 @@ setup(name='rt.calendarinandout',
         ],
       keywords='plone widget lines calendar jquery jquery-ui',
       author='RedTurtle Technology',
-      author_email='sviluppoplone@redturtle.net',
+      author_email='sviluppoplone@redturtle.it',
       url='http://plone.org/products/rt.calendarinandout',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
