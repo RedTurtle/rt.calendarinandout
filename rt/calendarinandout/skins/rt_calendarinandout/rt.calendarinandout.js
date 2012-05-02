@@ -86,6 +86,18 @@ function rtciao_insert_new_date(field) {
     rtciao_sync_textarea(field);
 }
 
+function insert_date_keydown(event) {
+    var keyCode, value;
+    keyCode = ('which' in event) ? event.which : event.keyCode;
+    value = jq(this).attr('value');
+    if (keyCode === 13) {
+        event.preventDefault();
+        if (value.length === 10) {
+            rtciao_insert_inputs(event.data.field,value);
+        }
+    }
+}
+
 /**
  * Initializes the app
  */
@@ -103,6 +115,7 @@ function rtciao_init(field, auto_add) {
       jq("div#"+field+"_calendar_target img#insert_new_date").click(function (){
           rtciao_insert_new_date(field);
       });
+    jq(new_date).bind('keydown', {field: 'except'}, insert_date_keydown);
     textarea.hide();
     new_date.datepicker({showOn: 'button', 
                          buttonImage: 'popup_calendar.gif', 

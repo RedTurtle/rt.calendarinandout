@@ -5,6 +5,7 @@ Changelog
 ------------------
 
 * Egg changes as we moved to github [keul]
+* Enabled adding a date also with "enter" key [cekk]
 
 1.0.2 (2012-02-23)
 ------------------
