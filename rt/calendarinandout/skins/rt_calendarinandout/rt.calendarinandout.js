@@ -115,7 +115,7 @@ function rtciao_init(field, auto_add) {
       jq("div#"+field+"_calendar_target img#insert_new_date").click(function (){
           rtciao_insert_new_date(field);
       });
-    jq(new_date).bind('keydown', {field: 'except'}, insert_date_keydown);
+    jq(new_date).bind('keydown', {field: field}, insert_date_keydown);
     textarea.hide();
     new_date.datepicker({showOn: 'button', 
                          buttonImage: 'popup_calendar.gif', 
