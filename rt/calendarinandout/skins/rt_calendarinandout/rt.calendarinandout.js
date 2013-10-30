@@ -6,24 +6,18 @@
  * 
  */
 
-if(typeof(String.prototype.trim) === "undefined")
-{
-    String.prototype.trim = function() 
-    {
-        return String(this).replace(/^\s+|\s+$/g, '');
-    };
-}
+(function($) {
 
 /**
  * Syncs the textarea with the newly available values
  */
 function rtciao_sync_textarea(field) {
-    var inputs = jq("div#"+field+"_calendar_target div#values_target input");
+    var inputs = $("div#"+field+"_calendar_target div#values_target input");
     var new_values=[];
     for (var i=0; i<inputs.length; i++) {
         new_values.push(inputs[i].value);
     }
-    var textarea = jq("#"+field);
+    var textarea = $("#"+field);
     textarea.attr({'value' : new_values.join("\n")});
 }
 
@@ -31,7 +25,7 @@ function rtciao_sync_textarea(field) {
  * Removes a value from the target inputs
  */
 function rtciao_remove_value(field, value) {
-    var target = jq("div#"+field+"_calendar_target div#values_target input[value="+value+"]");
+    var target = $("div#"+field+"_calendar_target div#values_target input[value="+value+"]");
     target.parent().remove();
     rtciao_sync_textarea(field);
 }
@@ -41,18 +35,18 @@ function rtciao_remove_value(field, value) {
  */
 function rtciao_insert_inputs(field, value) {
     // we want the value to be not null
-    if (!value.trim()) {
+    if (!$.trim(value)) {
         return;
     }
     // we want it to be non existent
-    var inputs = jq("div#"+field+"_calendar_target div#values_target input[value="+value+"]"); 
+    var inputs = $("div#"+field+"_calendar_target div#values_target input[value="+value+"]"); 
     if (inputs.length >0 ) {
         inputs.animate({color:'red'});
         inputs.animate({color:'black'});
         return;
     }
     // we have a slot on the page where to add those new input
-    var target = jq("div#"+field+"_calendar_target div#values_target");
+    var target = $("div#"+field+"_calendar_target div#values_target");
     target.append('<p></p>');
     var new_p = target.children(':last') ;
     new_p.append('<input disabled="disabled" type="text" value="'+value+'">');
@@ -60,36 +54,41 @@ function rtciao_insert_inputs(field, value) {
     var new_img = '<img id="'+value+'" src="delete_icon.gif" alt="[-]" style="cursor:pointer" title="[-]">';
     new_p.append(new_img);
     new_p.children('img').click(function () {
-		rtciao_remove_value(field, value);
-	});
+        rtciao_remove_value(field, value);
+    });
 }
 
 /**
  * Syncs the inputs with the saved values
  */
 function rtciao_sync_inputs(field) {
-    var textarea = jq("#"+field);
+    var textarea = $("#"+field);
     var values = textarea.attr('value').split("\n").sort();
     for (var i=0;i<values.length;i++){
-        var value = values[i].trim();
+        var value = $.trim(values[i]);
         if (value) {rtciao_insert_inputs(field, value);}
     }
 }
 
 /**
  * Inserts a new date into the inputs and then syncs the textarea
+ * @param clearAfter: clear the selection field after adding
  */
-function rtciao_insert_new_date(field) {
-    var target = jq("div#"+field+"_calendar_target ");
+function rtciao_insert_new_date(field, clearAfter) {
+    var target = $("div#"+field+"_calendar_target ");
     var value = target.children("input.new_date").attr('value');
     rtciao_insert_inputs(field, value);
+	if (clearAfter) {
+		var new_date = target.children("input.new_date");
+		new_date.val(null);
+	}
     rtciao_sync_textarea(field);
 }
 
 function insert_date_keydown(event) {
     var keyCode, value;
     keyCode = ('which' in event) ? event.which : event.keyCode;
-    value = jq(this).attr('value');
+    value = $(this).attr('value');
     if (keyCode === 13) {
         event.preventDefault();
         if (value.length === 10) {
@@ -102,28 +101,35 @@ function insert_date_keydown(event) {
  * Initializes the app
  */
 function rtciao_init(field, auto_add) {
-      var target = jq("div#"+field+"_calendar_target");
-      target.css({'display' : 'block'});
-      var new_date = target.children("input.new_date");
-      // new_date.attr('disabled', 'disabled');
-      var textarea = jq("#"+field); 	
-      var values = textarea.attr('value').split('\n');
-      for (var i=0;i<values.length;i++){
-          value = values[i].trim();
-	  if (value) {rtciao_insert_inputs(field, value);}
-      }
-      jq("div#"+field+"_calendar_target img#insert_new_date").click(function (){
-          rtciao_insert_new_date(field);
-      });
-    jq(new_date).bind('keydown', {field: field}, insert_date_keydown);
+    var target = $("div#"+field+"_calendar_target");
+    target.css({'display' : 'block'});
+    var new_date = target.children("input.new_date");
+    // new_date.attr('disabled', 'disabled');
+    var textarea = $("#"+field);     
+    var values = textarea.attr('value').split('\n');
+    for (var i=0;i<values.length;i++) {
+        value = $.trim(values[i]);
+        if (value) {
+            rtciao_insert_inputs(field, value);
+        }
+    }
+    $("div#"+field+"_calendar_target img#insert_new_date").click(function (){
+        rtciao_insert_new_date(field);
+    });
+    $(new_date).bind('keydown', {field: field}, insert_date_keydown);
     textarea.hide();
     new_date.datepicker({showOn: 'button', 
                          buttonImage: 'popup_calendar.gif', 
                          buttonImageOnly: true,
                          dateFormat: 'yy-mm-dd',
-			 onSelect: auto_add && function() {
-                           console.log(this);
-    		 	    rtciao_insert_new_date(field);
-			   } || null
-			});
+                         onSelect: auto_add && function() {
+                             rtciao_insert_new_date(field, true);
+                         } || null
+    });
 }
+
+$(document).bind('rtciao:init', function(event, field, autoAdd) {
+    rtciao_init(field, autoAdd);
+});
+
+})(jQuery);

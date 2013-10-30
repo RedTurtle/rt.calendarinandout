@@ -1,6 +1,15 @@
 Changelog
 =========
 
+1.1.0 (Unreleased)
+------------------
+
+* removed any deprecated reference to ``jq`` [keul]
+* do not pollute global namespace anymore [keul]
+* when ``auto_add`` option is used, automatically clear
+  the new date field [keul]
+* code cleanup
+
 1.0.3 (2012-05-02)
 ------------------
 

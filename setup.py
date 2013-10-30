@@ -5,9 +5,7 @@ This module contains the tool of rt.calendarinandout
 import os
 from setuptools import setup, find_packages
 
-version = '1.0.3'
-
-tests_require = ['zope.testing']
+version = '1.1.0.dev0'
 
 setup(name='rt.calendarinandout',
       version=version,
@@ -21,6 +19,7 @@ setup(name='rt.calendarinandout',
         'Framework :: Plone :: 3.3',
         'Framework :: Plone :: 4.0',
         'Framework :: Plone :: 4.1',
+        'Framework :: Plone :: 4.2',
         'Programming Language :: Python',
         'Programming Language :: JavaScript',
         'Intended Audience :: Developers',
@@ -38,9 +37,6 @@ setup(name='rt.calendarinandout',
       install_requires=['setuptools',
                         'collective.js.jqueryui'
                         ],
-      tests_require=tests_require,
-      extras_require=dict(tests=tests_require),
-      test_suite='rt.calendarinandout.tests.test_docs.test_suite',
       entry_points="""
       # -*- entry_points -*-
       [z3c.autoinclude.plugin]

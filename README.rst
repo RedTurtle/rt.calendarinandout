@@ -17,13 +17,22 @@ To use it just add a field like this in your archetype schema::
 
     LinesField(
         'dates',
-        widget = CalendarInAndOutWidget(
+         widget = CalendarInAndOutWidget(
             label=u"Dates",
             description=u"Enter the dates in the form yyyy-mm-dd.",
             ),
     )
 
 Then you can start enjoyng this widget!
+
+Configuration
+-------------
+
+You can use following additional widget options:
+
+``auto_add``
+    Instead of showing an "add date" button/icon, automatically add the date
+    when selected on the calendar
 
 Screenshots
 -----------
@@ -55,11 +64,11 @@ Screenshots
      :alt: Add and remove all the dates you want
      :target: http://keul.it/images/plone/rt.calendarinandout-3.png
 
-* With javascript disabled the widget is still fully functional, falling back to a normal textarea where
+* With JavaScript disabled the widget is still fully functional, falling back to a normal textarea where
   you can insert dates manually
 
   .. image:: http://keul.it/images/plone/rt.calendarinandout-4.png
-     :alt: With javascript disabled the widget is still fully functional
+     :alt: With JavaScript disabled the widget is still fully functional
      :target: http://keul.it/images/plone/rt.calendarinandout-4.png
 
 * In view the dates are rendered as an unordered list
@@ -78,10 +87,6 @@ You can easily include **rt.calendarinandout** in your buildout by adding
 it in both in the eggs and zcml sections::
 
     eggs=...
-         rt.calendarinandout
-         ...
-
-    zcml=...
          rt.calendarinandout
          ...
 
@@ -115,13 +120,19 @@ by following those three steps:
 Credits
 =======
 
-Developed with the support of `Comune di Modena`__; Comune di Modena supports the
-`PloneGov initiative`__.
+Developed with the support of:
 
-.. image:: http://www.comune.modena.it/grafica/logoComune/logoComunexweb.jpg 
-   :alt: Comune di Modena's logo
+* `Rete Civica Mo-Net - Comune di Modena`__
+  
+  .. image:: http://www.comune.modena.it/grafica/logoComune/logoComunexweb.jpg 
+     :alt: Comune di Modena's logo
+
+* `Regione Emilia Romagna`__
+
+All of them supports the `PloneGov initiative`__.
 
 __ http://www.comune.modena.it/
+__ http://www.regione.emilia-romagna.it/
 __ http://www.plonegov.it/
 
 Authors
@@ -129,14 +140,16 @@ Authors
 
 This product was developed by RedTurtle Technology team.
 
-.. image:: http://www.redturtle.net/redturtle_banner.png
+.. image:: http://www.redturtle.it/redturtle_banner.png
    :alt: RedTurtle Technology Site
-   :target: http://www.redturtle.net/
+   :target: http://www.redturtle.it/
 
 
 TODO
 ----
+
 * Complete internazionalization
 * Now duplicate values are forbidden, this should be an option
 * Add an option to trigger the client side validation of the added date format
+* Gives to developer a way to control date format used
 * Some artwork will be a nice plus :)

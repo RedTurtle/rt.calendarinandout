@@ -11,9 +11,9 @@ class CalendarInAndOutWidget(LinesWidget):
     _properties.update({
         'macro' : 'rt_calendarinandout',
 #        'dateformat' : '%d/%m/%Y',
-        'with_time' : False,
-        'default_hour' : 0,
-        'default_minute' : 0,
+#        'with_time' : False,
+#        'default_hour' : 0,
+#        'default_minute' : 0,
         'auto_add': False,
         })
 
@@ -23,14 +23,18 @@ class CalendarInAndOutWidget(LinesWidget):
         """
         lang = self.portal_languages.getLanguageBindings()[0]
         return """
-        <script type="text/javascript" src="jquery.ui.datepicker-%s.js"></script>
-        <script type="text/javascript">
-            <!--
-                jq('document').ready(function(){
-                    rtciao_init('%s', %s);
-                });
-            //-->
-        </script>
+<script type="text/javascript" src="jquery.ui.datepicker-%s.js"></script>
+<script type="text/javascript">
+<!--
+(function($) {
+
+    $(document).ready(function() {
+        $(document).trigger('rtciao:init', ['%s', %s]);
+    });
+
+})(jQuery);               
+//-->
+</script>
 """ % (lang, field_name, self.auto_add and 'true' or 'false')
 
 InitializeClass(CalendarInAndOutWidget)
