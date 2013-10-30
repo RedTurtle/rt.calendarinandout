@@ -49,7 +49,7 @@ function rtciao_insert_inputs(field, value) {
     var target = $("div#"+field+"_calendar_target div#values_target");
     target.append('<p></p>');
     var new_p = target.children(':last') ;
-    new_p.append('<input disabled="disabled" type="text" value="'+value+'">');
+    new_p.append('<input disabled="disabled" type="text" size="10" maxlength="10" value="'+value+'">');
     // We also add a link to remove the added date
     var new_img = '<img id="'+value+'" src="delete_icon.gif" alt="[-]" style="cursor:pointer" title="[-]">';
     new_p.append(new_img);

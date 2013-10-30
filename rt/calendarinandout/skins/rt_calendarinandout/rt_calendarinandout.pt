@@ -10,8 +10,8 @@
 
     <metal:view_macro define-macro="view" tal:repeat="item accessor">
       <ul>
-      	<li tal:content="item"/>
-	  </ul>
+          <li tal:content="item"/>
+      </ul>
     </metal:view_macro>
 
     <div metal:define-macro="edit">
@@ -24,26 +24,26 @@
                         tal:content="python:value and '\n'.join(value) or ''"></textarea>
               <script type="text/javascript" tal:attributes="src string:$portal_url/rt.calendarinandout.js"></script>
               <div id="calendar_target" style="display:none" 
-			       tal:attributes="id string:${fieldName}_calendar_target">
-              	<div id="values_target"></div>
+                   tal:attributes="id string:${fieldName}_calendar_target">
+                  <div id="values_target"></div>
                 <input value=""
                        type="text"
                        class="new_date"
                        name="new_date"
-                       size="25"
-					   maxlength="10"
+                       size="10"
+                       maxlength="10"
                        />
                 <img id="insert_new_date" 
                      src="add_icon.gif" 
                      alt="[+]"
-					 title="[+]"
-					 style="cursor:pointer"
-					 tal:condition="not:widget/auto_add"
-					 />
-		      </div>
-			  <tal:initjs tal:replace="structure python:widget.init_calendar(fieldName)" />
+                     title="[+]"
+                     style="cursor:pointer"
+                     tal:condition="not:widget/auto_add"
+                     />
+              </div>
+              <tal:initjs tal:replace="structure python:widget.init_calendar(fieldName)" />
           </div>
-		  
+          
       </div>
     </div>
 
