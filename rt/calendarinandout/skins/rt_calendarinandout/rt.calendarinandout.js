@@ -8,6 +8,8 @@
 
 (function($) {
 
+var allowDuplicate = false;
+
 /**
  * Syncs the textarea with the newly available values
  */
@@ -38,13 +40,17 @@ function rtciao_insert_inputs(field, value) {
     if (!$.trim(value)) {
         return;
     }
-    // we want it to be non existent
-    var inputs = $("div#"+field+"_calendar_target div#values_target input[value="+value+"]"); 
-    if (inputs.length >0 ) {
-        inputs.animate({color:'red'});
-        inputs.animate({color:'black'});
-        return;
+    
+    if (!allowDuplicate) {
+        // we want it to be non existent
+        var inputs = $("div#"+field+"_calendar_target div#values_target input[value="+value+"]"); 
+        if (inputs.length >0 ) {
+            inputs.animate({color:'red'});
+            inputs.animate({color:'black'});
+            return;
+        }
     }
+
     // we have a slot on the page where to add those new input
     var target = $("div#"+field+"_calendar_target div#values_target");
     target.append('<p></p>');
@@ -78,10 +84,10 @@ function rtciao_insert_new_date(field, clearAfter) {
     var target = $("div#"+field+"_calendar_target ");
     var value = target.children("input.new_date").attr('value');
     rtciao_insert_inputs(field, value);
-	if (clearAfter) {
-		var new_date = target.children("input.new_date");
-		new_date.val(null);
-	}
+    if (clearAfter) {
+        var new_date = target.children("input.new_date");
+        new_date.val(null);
+    }
     rtciao_sync_textarea(field);
 }
 
@@ -100,7 +106,9 @@ function insert_date_keydown(event) {
 /**
  * Initializes the app
  */
-function rtciao_init(field, auto_add) {
+function rtciao_init(field, auto_add, allow_duplicate) {
+    allowDuplicate = allow_duplicate;
+    
     var target = $("div#"+field+"_calendar_target");
     target.css({'display' : 'block'});
     var new_date = target.children("input.new_date");
@@ -128,8 +136,8 @@ function rtciao_init(field, auto_add) {
     });
 }
 
-$(document).bind('rtciao:init', function(event, field, autoAdd) {
-    rtciao_init(field, autoAdd);
+$(document).bind('rtciao:init', function(event, field, autoAdd, allowDuplicate) {
+    rtciao_init(field, autoAdd, allowDuplicate);
 });
 
 })(jQuery);

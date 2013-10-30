@@ -32,7 +32,9 @@ You can use following additional widget options:
 
 ``auto_add``
     Instead of showing an "add date" button/icon, automatically add the date
-    when selected on the calendar
+    when selected on the calendar. Default is false.
+``allow_duplicate``
+     Allow the selection of the same date more and more times. Default is false.
 
 Screenshots
 -----------
@@ -149,7 +151,6 @@ TODO
 ----
 
 * Complete internazionalization
-* Now duplicate values are forbidden, this should be an option
 * Add an option to trigger the client side validation of the added date format
 * Gives to developer a way to control date format used
 * Some artwork will be a nice plus :)

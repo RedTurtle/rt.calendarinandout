@@ -6,6 +6,7 @@ Changelog
 
 * removed any deprecated reference to ``jq`` [keul]
 * do not pollute global namespace anymore [keul]
+* fixed disabled option ``allow_duplicate`` [keul]
 * when ``auto_add`` option is used, automatically clear
   the new date field [keul]
 * code cleanup

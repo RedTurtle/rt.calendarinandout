@@ -15,6 +15,7 @@ class CalendarInAndOutWidget(LinesWidget):
 #        'default_hour' : 0,
 #        'default_minute' : 0,
         'auto_add': False,
+        'allow_duplicate': False,
         })
 
     def init_calendar(self, field_name):
@@ -29,13 +30,14 @@ class CalendarInAndOutWidget(LinesWidget):
 (function($) {
 
     $(document).ready(function() {
-        $(document).trigger('rtciao:init', ['%s', %s]);
+        $(document).trigger('rtciao:init', ['%s', %s, %s]);
     });
 
 })(jQuery);               
 //-->
 </script>
-""" % (lang, field_name, self.auto_add and 'true' or 'false')
+""" % (lang, field_name, self.auto_add and 'true' or 'false',
+       self.allow_duplicate and 'true' or 'false')
 
 InitializeClass(CalendarInAndOutWidget)
 
