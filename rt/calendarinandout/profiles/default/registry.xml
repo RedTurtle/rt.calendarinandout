@@ -1,0 +1,5 @@
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+    <records interface="collective.js.jqueryui.controlpanel.IJQueryUIPlugins">
+        <value key="ui_datepicker">True</value>
+    </records>
+</registry>

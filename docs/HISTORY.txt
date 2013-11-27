@@ -4,8 +4,7 @@ Changelog
 1.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Activate jQueryUI datepicker when installed [keul]
 
 1.1.0 (2013-10-30)
 ------------------
