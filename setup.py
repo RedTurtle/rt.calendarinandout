@@ -5,7 +5,7 @@ This module contains the tool of rt.calendarinandout
 import os
 from setuptools import setup, find_packages
 
-version = '1.1.1.dev0'
+version = '1.2.0.dev0'
 
 setup(name='rt.calendarinandout',
       version=version,
@@ -16,10 +16,10 @@ setup(name='rt.calendarinandout',
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         'Framework :: Plone',
-        'Framework :: Plone :: 3.3',
         'Framework :: Plone :: 4.0',
         'Framework :: Plone :: 4.1',
         'Framework :: Plone :: 4.2',
+        'Framework :: Plone :: 4.3',
         'Programming Language :: Python',
         'Programming Language :: JavaScript',
         'Intended Audience :: Developers',

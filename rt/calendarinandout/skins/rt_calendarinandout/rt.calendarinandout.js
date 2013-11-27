@@ -57,7 +57,7 @@ function rtciao_insert_inputs(field, value) {
     var new_p = target.children(':last') ;
     new_p.append('<input disabled="disabled" type="text" size="10" maxlength="10" value="'+value+'">');
     // We also add a link to remove the added date
-    var new_img = '<img id="'+value+'" src="delete_icon.gif" alt="[-]" style="cursor:pointer" title="[-]">';
+    var new_img = '<img id="'+value+'" src="' + portal_url + '/++resource++rt.calendarinandout.images/delete_icon.gif" alt="[-]" style="cursor:pointer" title="[-]">';
     new_p.append(new_img);
     new_p.children('img').click(function () {
         rtciao_remove_value(field, value);
@@ -127,7 +127,7 @@ function rtciao_init(field, auto_add, allow_duplicate) {
     $(new_date).bind('keydown', {field: field}, insert_date_keydown);
     textarea.hide();
     new_date.datepicker({showOn: 'button', 
-                         buttonImage: 'popup_calendar.gif', 
+                         buttonImage: portal_url + '/++resource++rt.calendarinandout.images/popup_calendar.gif', 
                          buttonImageOnly: true,
                          dateFormat: 'yy-mm-dd',
                          onSelect: auto_add && function() {
