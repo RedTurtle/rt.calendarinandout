@@ -35,7 +35,7 @@ setup(name='rt.calendarinandout',
       include_package_data=True,
       zip_safe=False,
       install_requires=['setuptools',
-                        'collective.js.jqueryui'
+                        'collective.js.jqueryui',
                         'Products.CMFPlone>4.0b1',
                         ],
       entry_points="""
