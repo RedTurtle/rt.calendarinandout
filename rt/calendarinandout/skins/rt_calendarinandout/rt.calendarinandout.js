@@ -57,12 +57,12 @@ function rtciao_insert_inputs(field, value) {
     new_p.append('<input disabled="disabled" type="text" size="10" maxlength="10" value="'+value+'">');
     // We also add a link to remove the added date
     var new_command =
-		'<a href="" title="[-]">' 
-		+ '<img src="' + portal_url + '/++resource++rt.calendarinandout.images/delete_icon.gif" alt="-" style="cursor:pointer">'
-		+ '</a>';
+        '<a href="" title="[-]">' 
+        + '<img src="' + portal_url + '/++resource++rt.calendarinandout.images/delete_icon.gif" alt="-" style="cursor:pointer">'
+        + '</a>';
     new_p.append(new_command);
     new_p.children('a').click(function (event) {
-		event.preventDefault();
+        event.preventDefault();
         rtciao_remove_value(this, field);
     });
 }
@@ -125,35 +125,36 @@ function rtciao_init(field, auto_add, allow_duplicate) {
         }
     }
     $("div#"+field+"_calendar_target .insert_new_date").click(function (event) {
-		event.preventDefault();
+        event.preventDefault();
         rtciao_insert_new_date(field);
     });
     new_date.datepicker({showOn: 'button', 
                          buttonImage: portal_url + '/++resource++rt.calendarinandout.images/popup_calendar.gif', 
                          buttonImageOnly: true,
                          dateFormat: 'yy-mm-dd',
-						 showButtonPanel: true,
+                         showButtonPanel: true,
                          onSelect: auto_add && function() {
                              rtciao_insert_new_date(field, true);
                          } || null,
-						 onClose: function() {
-						 	// Ugly bug works. Calling directly the .focus() is not working; someway datepicker remove the focus
-						 	setTimeout(function() {new_date.trigger('focus', true);}, 100);
-						 }
+                         onClose: function() {
+                             // Ugly bug works. Calling directly the .focus() is not working; someway datepicker remove the focus
+                            // * Disabled as we see this can brutally collide with jquery .live('focus', ...) *
+                             // setTimeout(function() {new_date.trigger('focus', [true]);}, 200);
+                         }
     });
     new_date.bind('keydown', {field: field}, insert_date_keydown)
-			.focus(function(event, disableCalendarOpening) {
-				if (!disableCalendarOpening) {
-					$(this).datepicker("show");
-					$('.ui-state-highlight').focus();
-					$('.ui-datepicker-calendar tbody a').focus(function() {
-						var message = $('.ui-state-default:focus').html() + ' '
-								+ $('.ui-datepicker-month').html() + ' '
-								+ $('.ui-datepicker-year').html();
-						target.find('.liveRegion').text(message);
-					});					
-				}
-			});
+            .focus(function(event, disableCalendarOpening) {
+                if (!disableCalendarOpening) {
+                    $(this).datepicker("show");
+                    $('.ui-state-highlight').focus();
+                    $('.ui-datepicker-calendar tbody a').focus(function() {
+                        var message = $('.ui-state-default:focus').html() + ' '
+                                + $('.ui-datepicker-month').html() + ' '
+                                + $('.ui-datepicker-year').html();
+                        target.find('.liveRegion').text(message);
+                    });                    
+                }
+            });
     textarea.hide();
 }
 
