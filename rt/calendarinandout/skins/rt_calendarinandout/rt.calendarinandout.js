@@ -119,7 +119,7 @@ function rtciao_init(field, auto_add, allow_duplicate) {
     var textarea = $("#original_"+field);     
     var values = textarea.attr('value').split('\n');
     for (var i=0;i<values.length;i++) {
-        value = $.trim(values[i]);
+        var value = $.trim(values[i]);
         if (value) {
             rtciao_insert_inputs(field, value);
         }
@@ -135,18 +135,24 @@ function rtciao_init(field, auto_add, allow_duplicate) {
 						 showButtonPanel: true,
                          onSelect: auto_add && function() {
                              rtciao_insert_new_date(field, true);
-                         } || null
+                         } || null,
+						 onClose: function() {
+						 	// Ugly bug works. Calling directly the .focus() is not working; someway datepicker remove the focus
+						 	setTimeout(function() {new_date.trigger('focus', true);}, 100);
+						 }
     });
-    $(new_date).bind('keydown', {field: field}, insert_date_keydown)
-			.focus(function(event) {
-				$(this).datepicker("show");
-				$('.ui-state-highlight').focus();
-				$('.ui-datepicker-calendar tbody a').focus(function() {
-					var message = $('.ui-state-default:focus').html() + ' '
-							+ $('.ui-datepicker-month').html() + ' '
-							+ $('.ui-datepicker-year').html();
-					target.find('.liveRegion').text(message);
-				});
+    new_date.bind('keydown', {field: field}, insert_date_keydown)
+			.focus(function(event, disableCalendarOpening) {
+				if (!disableCalendarOpening) {
+					$(this).datepicker("show");
+					$('.ui-state-highlight').focus();
+					$('.ui-datepicker-calendar tbody a').focus(function() {
+						var message = $('.ui-state-default:focus').html() + ' '
+								+ $('.ui-datepicker-month').html() + ' '
+								+ $('.ui-datepicker-year').html();
+						target.find('.liveRegion').text(message);
+					});					
+				}
 			});
     textarea.hide();
 }
