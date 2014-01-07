@@ -14,7 +14,7 @@ class CalendarInAndOutWidget(LinesWidget):
 #        'with_time' : False,
 #        'default_hour' : 0,
 #        'default_minute' : 0,
-        'auto_add': False,
+        'auto_add': True,
         'allow_duplicate': False,
         })
 

@@ -1,16 +1,16 @@
-Introduction
-============
-
-**rt.calendarinandout** provides an archetype widget that allows to add and remove
-dates using the fancy `jquery.ui.datepicker plugin`__
+Provides an **Archetypes widget** that allows to **add and remove dates** using the fancy `jquery.ui.datepicker plugin`__
 
 __ http://jqueryui.com/demos/datepicker/
+
+.. contents:: **Table of contents**
 
 Usage
 =====
 
 The widget stores the information in to a LinesField archetype field.
-To use it just add a field like this in your archetype schema::
+To use it just add a field like this in your archetype schema:
+
+.. code-block:: python
 
     from Products.Archetypes.atapi import LinesField
     from rt.calendarinandout.widget import CalendarInAndOutWidget
@@ -32,7 +32,7 @@ You can use following additional widget options:
 
 ``auto_add``
     Instead of showing an "add date" button/icon, automatically add the date
-    when selected on the calendar. Default is false.
+    when selected on the calendar. Default is true.
 ``allow_duplicate``
      Allow the selection of the same date more and more times. Default is false.
 
@@ -79,11 +79,8 @@ Screenshots
      :alt: In view the dates are rendered as an unordered list
      :target: http://keul.it/images/plone/rt.calendarinandout-5.png
 
-Add this egg to your buildout
-=============================
-
-Direct installation
--------------------
+Installation
+============
 
 You can easily include **rt.calendarinandout** in your buildout by adding
 it in both in the eggs and zcml sections::
@@ -92,32 +89,17 @@ it in both in the eggs and zcml sections::
          rt.calendarinandout
          ...
 
-Triggering the installation from your own egg
----------------------------------------------
+After then, re-run your buildout, restart your instance and activate the rt.calendarinandout
+add-on.
 
-If you are developing your own egg you can make it depend on **rt.calendarinandout** 
-by following those three steps:
+TODO
+----
 
-* add **rt.calendarinandout** it in the install_requires section of the setup.py
-  of *your egg*::
-  
-    install_requires=[...
-                      'rt.calendarinandout'
-                      ...]
-
-* add the dependency in *your egg* profiles/default/metadata.xml file::                   
-
-    <?xml version="1.0"?>
-    <metadata>
-      <version>...</version>
-      <dependencies>
-        <dependency>profile-rt.calendarinandout:default</dependency>
-      </dependencies>
-    </metadata>
-
-* add the dependency in the configure.zcml at the root of your package, including this line::
-
-    <include package="rt.calendarinandout" />
+* Complete internazionalization
+* Add an option to trigger the client side validation of the added date format
+* Gives to developer a way to control date format used
+* Some artwork will be a nice plus :)
+* Refactor JavaScript to not use global namespace
 
 Credits
 =======
@@ -146,11 +128,3 @@ This product was developed by RedTurtle Technology team.
    :alt: RedTurtle Technology Site
    :target: http://www.redturtle.it/
 
-
-TODO
-----
-
-* Complete internazionalization
-* Add an option to trigger the client side validation of the added date format
-* Gives to developer a way to control date format used
-* Some artwork will be a nice plus :)

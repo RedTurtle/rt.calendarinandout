@@ -8,6 +8,10 @@ Plone 4.3 supported while dropped Plone 3
 
 - Activate jQueryUI datepicker when installed [keul]
 - Include icons in the product itself for Plone 4.3 compatibility [keul]
+- All images loaded from site root, to be cache friendly [keul]
+- Changed default value of ``auto_add`` to true [keul]
+- HTML sanitize: removed duplicated id that origin validation errors [keul]
+- Accessibility fixes: the widget can now be used with keyboard [keul]
 
 1.1.0 (2013-10-30)
 ------------------

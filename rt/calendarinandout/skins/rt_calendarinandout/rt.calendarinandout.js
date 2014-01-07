@@ -14,21 +14,20 @@ var allowDuplicate = false;
  * Syncs the textarea with the newly available values
  */
 function rtciao_sync_textarea(field) {
-    var inputs = $("div#"+field+"_calendar_target div#values_target input");
+    var inputs = $("#"+field+"_calendar_target div.values_target input");
     var new_values=[];
     for (var i=0; i<inputs.length; i++) {
         new_values.push(inputs[i].value);
     }
-    var textarea = $("#"+field);
+    var textarea = $("#original_"+field);
     textarea.attr({'value' : new_values.join("\n")});
 }
 
 /**
  * Removes a value from the target inputs
  */
-function rtciao_remove_value(field, value) {
-    var target = $("div#"+field+"_calendar_target div#values_target input[value="+value+"]");
-    target.parent().remove();
+function rtciao_remove_value(command, field) {
+    $(command).parent().remove();
     rtciao_sync_textarea(field);
 }
 
@@ -43,7 +42,7 @@ function rtciao_insert_inputs(field, value) {
     
     if (!allowDuplicate) {
         // we want it to be non existent
-        var inputs = $("div#"+field+"_calendar_target div#values_target input[value="+value+"]"); 
+        var inputs = $("div#"+field+"_calendar_target div.values_target input[value="+value+"]"); 
         if (inputs.length >0 ) {
             inputs.animate({color:'red'});
             inputs.animate({color:'black'});
@@ -52,15 +51,19 @@ function rtciao_insert_inputs(field, value) {
     }
 
     // we have a slot on the page where to add those new input
-    var target = $("div#"+field+"_calendar_target div#values_target");
+    var target = $("div#"+field+"_calendar_target div.values_target");
     target.append('<p></p>');
     var new_p = target.children(':last') ;
     new_p.append('<input disabled="disabled" type="text" size="10" maxlength="10" value="'+value+'">');
     // We also add a link to remove the added date
-    var new_img = '<img id="'+value+'" src="' + portal_url + '/++resource++rt.calendarinandout.images/delete_icon.gif" alt="[-]" style="cursor:pointer" title="[-]">';
-    new_p.append(new_img);
-    new_p.children('img').click(function () {
-        rtciao_remove_value(field, value);
+    var new_command =
+		'<a href="" title="[-]">' 
+		+ '<img src="' + portal_url + '/++resource++rt.calendarinandout.images/delete_icon.gif" alt="-" style="cursor:pointer">'
+		+ '</a>';
+    new_p.append(new_command);
+    new_p.children('a').click(function (event) {
+		event.preventDefault();
+        rtciao_remove_value(this, field);
     });
 }
 
@@ -68,7 +71,7 @@ function rtciao_insert_inputs(field, value) {
  * Syncs the inputs with the saved values
  */
 function rtciao_sync_inputs(field) {
-    var textarea = $("#"+field);
+    var textarea = $("#original_"+field);
     var values = textarea.attr('value').split("\n").sort();
     for (var i=0;i<values.length;i++){
         var value = $.trim(values[i]);
@@ -113,7 +116,7 @@ function rtciao_init(field, auto_add, allow_duplicate) {
     target.css({'display' : 'block'});
     var new_date = target.children("input.new_date");
     // new_date.attr('disabled', 'disabled');
-    var textarea = $("#"+field);     
+    var textarea = $("#original_"+field);     
     var values = textarea.attr('value').split('\n');
     for (var i=0;i<values.length;i++) {
         value = $.trim(values[i]);
@@ -121,19 +124,31 @@ function rtciao_init(field, auto_add, allow_duplicate) {
             rtciao_insert_inputs(field, value);
         }
     }
-    $("div#"+field+"_calendar_target img#insert_new_date").click(function (){
+    $("div#"+field+"_calendar_target .insert_new_date").click(function (event) {
+		event.preventDefault();
         rtciao_insert_new_date(field);
     });
-    $(new_date).bind('keydown', {field: field}, insert_date_keydown);
-    textarea.hide();
     new_date.datepicker({showOn: 'button', 
                          buttonImage: portal_url + '/++resource++rt.calendarinandout.images/popup_calendar.gif', 
                          buttonImageOnly: true,
                          dateFormat: 'yy-mm-dd',
+						 showButtonPanel: true,
                          onSelect: auto_add && function() {
                              rtciao_insert_new_date(field, true);
                          } || null
     });
+    $(new_date).bind('keydown', {field: field}, insert_date_keydown)
+			.focus(function(event) {
+				$(this).datepicker("show");
+				$('.ui-state-highlight').focus();
+				$('.ui-datepicker-calendar tbody a').focus(function() {
+					var message = $('.ui-state-default:focus').html() + ' '
+							+ $('.ui-datepicker-month').html() + ' '
+							+ $('.ui-datepicker-year').html();
+					target.find('.liveRegion').text(message);
+				});
+			});
+    textarea.hide();
 }
 
 $(document).bind('rtciao:init', function(event, field, autoAdd, allowDuplicate) {

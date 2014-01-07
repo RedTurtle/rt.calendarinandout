@@ -18,28 +18,30 @@
       <div metal:use-macro="field_macro | here/widgets/field/macros/edit">
           <div metal:fill-slot="widget_body">
               <textarea tal:attributes="name string:$fieldName:lines;
-                                        id fieldName;
+                                        id string:original_${fieldName};
                                         cols widget/cols;
                                         rows widget/rows;"
                         tal:content="python:value and '\n'.join(value) or ''"></textarea>
               <script type="text/javascript" tal:attributes="src string:$portal_url/rt.calendarinandout.js"></script>
               <div id="calendar_target" style="display:none" 
                    tal:attributes="id string:${fieldName}_calendar_target">
-                  <div id="values_target"></div>
+                  <div class="values_target"></div>
+				  <div class="liveRegion hiddenStructure" role="log" aria-live="assertive" aria-atomic="true" aria-relevant="additions"></div>
                 <input value=""
                        type="text"
                        class="new_date"
                        name="new_date"
                        size="10"
                        maxlength="10"
+					   tal:attributes="id fieldName"
                        />
-                <img id="insert_new_date" 
-                     src="add_icon.gif" 
-                     alt="[+]"
-                     title="[+]"
-                     style="cursor:pointer"
-                     tal:condition="not:widget/auto_add"
-                     />
+                <a class="insert_new_date" title="[+]" href=""
+	               tal:condition="not:widget/auto_add">
+	                <img alt="+"
+	                     style="cursor:pointer"
+						 tal:attributes="src string:${portal_url}/++resource++rt.calendarinandout.images/add_icon.gif"
+	                     />
+				</a>
               </div>
               <tal:initjs tal:replace="structure python:widget.init_calendar(fieldName)" />
           </div>
