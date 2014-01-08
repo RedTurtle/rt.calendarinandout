@@ -113,6 +113,14 @@ function rtciao_init(field, auto_add, allow_duplicate) {
     allowDuplicate = allow_duplicate;
     
     var target = $("div#"+field+"_calendar_target");
+    
+    if (target.data('rtciaoinited')) {
+        // Already inited
+        return
+    }
+    // Next time will not reach this
+    target.data('rtciaoinited', true);
+    
     target.css({'display' : 'block'});
     var new_date = target.children("input.new_date");
     // new_date.attr('disabled', 'disabled');
@@ -138,14 +146,14 @@ function rtciao_init(field, auto_add, allow_duplicate) {
                          } || null,
                          onClose: function() {
                              // Ugly bug works. Calling directly the .focus() is not working; someway datepicker remove the focus
-                            // * Disabled as we see this can brutally collide with jquery .live('focus', ...) *
+                             // * Disabled as we see this can brutally collide someway with jquery .delegate (non-sense) *
                              // setTimeout(function() {new_date.trigger('focus', [true]);}, 200);
                          }
     });
     new_date.bind('keydown', {field: field}, insert_date_keydown)
             .focus(function(event, disableCalendarOpening) {
-                if (!disableCalendarOpening) {
-                    $(this).datepicker("show");
+                if (event.originalEvent && !disableCalendarOpening) {
+                    new_date.datepicker("show");
                     $('.ui-state-highlight').focus();
                     $('.ui-datepicker-calendar tbody a').focus(function() {
                         var message = $('.ui-state-default:focus').html() + ' '
