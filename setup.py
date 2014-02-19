@@ -5,7 +5,7 @@ This module contains the tool of rt.calendarinandout
 import os
 from setuptools import setup, find_packages
 
-version = '1.2.0.dev0'
+version = '1.2.0'
 
 setup(name='rt.calendarinandout',
       version=version,
